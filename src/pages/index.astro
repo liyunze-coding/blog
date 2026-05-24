@@ -1,5 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+
+const posts = await getSinglePage("blog");
 ---
 
 <Layout>
@@ -9,42 +12,21 @@ import Layout from "@/layouts/Layout.astro";
 				<h1 class="text-center text-7xl">Latest Posts</h1>
 			</section>
 			<section class="flex flex-col items-center justify-center gap-5">
+				{posts.map((post) => (
+    		        <hr class="w-full border border-solid border-[#404040]" />
+    				<a href={`/blog/${post.id}`}>
+       					<div class="flex flex-row items-center justify-between">
+      						<h2 class="mb-2 text-3xl font-extrabold uppercase text-balance">
+     							{post.data.title}
+      						</h2>
+      						<div class="text-lg text-gray-400 w-1/4">2026-05-24</div>
+       					</div>
+       					<p class="text-gray-400 text-xl">
+      						{post.data.description}
+       					</p>
+    				</a>
+				))}
 				<hr class="w-full border border-solid border-[#404040]" />
-				<div>
-					<div class="flex flex-row items-center justify-between">
-						<h2 class="mb-2 text-3xl font-extrabold uppercase">
-							Blog test
-						</h2>
-						<div class="text-lg text-gray-400">2026-05-24</div>
-					</div>
-					<p class="text-gray-400">
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Autem iste, voluptate blanditiis veniam quas nobis
-						placeat eos omnis odio perferendis aliquam cumque
-						dignissimos quae vero et. Nesciunt impedit aliquam error
-						eligendi, est vero praesentium a deserunt sequi. Nihil
-						amet repellat, tempora, nam tempore similique facere
-						velit doloribus, accusamus debitis corporis!
-					</p>
-				</div>
-				<hr class="w-full border border-solid border-[#404040]" />
-				<div>
-					<div class="flex flex-row items-center justify-between">
-						<h2 class="mb-2 text-3xl font-extrabold uppercase">
-							Blog test
-						</h2>
-						<div class="text-lg text-gray-400">2026-05-24</div>
-					</div>
-					<p class="text-gray-400">
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Autem iste, voluptate blanditiis veniam quas nobis
-						placeat eos omnis odio perferendis aliquam cumque
-						dignissimos quae vero et. Nesciunt impedit aliquam error
-						eligendi, est vero praesentium a deserunt sequi. Nihil
-						amet repellat, tempora, nam tempore similique facere
-						velit doloribus, accusamus debitis corporis!
-					</p>
-				</div>
 			</section>
 		</div>
 	</main>
