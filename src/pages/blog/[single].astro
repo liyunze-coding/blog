@@ -1,7 +1,9 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
+import PostTitle from "@/components/PostTitle.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import PostSingle from "@/partials/PostSingle.astro";
+import AllPosts from "@/components/AllPosts.astro";
 
 export async function getStaticPaths() {
 	const posts = await getSinglePage("blog");
@@ -16,9 +18,18 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { title } = post.data;
+const { title, styledWordClasses } = post.data;
 ---
 
 <BlogLayout title={title}>
+	<AllPosts />
+	<PostTitle
+		title={title}
+		postId={post.id}
+		as="h1"
+		variant="styled"
+		class="mt-4 mb-10 text-2xl text-balance md:text-wrap"
+		styledWordClasses={styledWordClasses}
+	/>
 	<PostSingle post={post} />
 </BlogLayout>

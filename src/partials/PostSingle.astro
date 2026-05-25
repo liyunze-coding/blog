@@ -4,4 +4,163 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Content />
+<div class="post-content">
+	<Content />
+</div>
+
+<script>
+	const slugifyHeadingText = (text: string) =>
+		text
+			.toLowerCase()
+			.trim()
+			.replace(/[^\w\s-]/g, "")
+			.replace(/\s+/g, "-")
+			.replace(/-+/g, "-");
+
+	const copyText = async (text: string) => {
+		if (navigator.clipboard) {
+			try {
+				await navigator.clipboard.writeText(text);
+				return;
+			} catch {
+				// Fall back for browsers that expose clipboard but reject writes.
+			}
+		}
+	};
+
+	document.querySelectorAll(".post-content").forEach((postContent) => {
+		postContent
+			.querySelectorAll<HTMLHeadingElement>("h1, h2, h3, h4, h5, h6")
+			.forEach((heading) => {
+				if (!heading.id) {
+					heading.id = slugifyHeadingText(heading.textContent ?? "");
+				}
+
+				if (!heading.id) {
+					return;
+				}
+
+				heading.addEventListener("click", async () => {
+					const url = new URL(window.location.href);
+					url.hash = heading.id;
+					window.history.replaceState(null, "", url);
+
+					await copyText(url.toString());
+				});
+			});
+	});
+</script>
+
+<style>
+	.post-content :global(a:not(#all-posts)) {
+		color: lightskyblue;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.post-content :global(p) {
+		display: block;
+		font-size: 1.1rem;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.post-content :global(h1) {
+		display: block;
+		font-size: 2em;
+		margin-top: 0.67em;
+		margin-bottom: 0.67em;
+		margin-left: 0;
+		margin-right: 0;
+		font-weight: bold;
+		color: #8fffde;
+	}
+
+	.post-content :global(h1[id]),
+	.post-content :global(h2[id]),
+	.post-content :global(h3[id]),
+	.post-content :global(h4[id]),
+	.post-content :global(h5[id]),
+	.post-content :global(h6[id]) {
+		position: relative;
+		cursor: pointer;
+		scroll-margin-top: 1rem;
+	}
+
+	.post-content :global(h1[id]::before),
+	.post-content :global(h2[id]::before),
+	.post-content :global(h3[id]::before),
+	.post-content :global(h4[id]::before),
+	.post-content :global(h5[id]::before),
+	.post-content :global(h6[id]::before) {
+		content: "#";
+		position: absolute;
+		right: calc(100% + 0.35em);
+		color: lightskyblue;
+		opacity: 0;
+		transform: translateX(0.25em);
+		transition:
+			opacity 150ms ease,
+			transform 150ms ease;
+	}
+
+	.post-content :global(h1[id]:hover::before),
+	.post-content :global(h2[id]:hover::before),
+	.post-content :global(h3[id]:hover::before),
+	.post-content :global(h4[id]:hover::before),
+	.post-content :global(h5[id]:hover::before),
+	.post-content :global(h6[id]:hover::before) {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.post-content :global(h2) {
+		display: block;
+		font-size: 1.5em;
+		margin-top: 0.83em;
+		margin-bottom: 0.83em;
+		margin-left: 0;
+		margin-right: 0;
+		font-weight: bold;
+		color: #f2bebe;
+	}
+
+	.post-content :global(h3) {
+		display: block;
+		font-size: 1.17em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		margin-left: 0;
+		margin-right: 0;
+		font-weight: bold;
+	}
+
+	.post-content :global(ul) {
+		display: block;
+		list-style-type: disc;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 0.5em;
+		padding-left: 40px;
+	}
+
+	.post-content :global(ul:not(ul ul)) {
+		margin-top: 0.5em;
+	}
+
+	.post-content :global(li) {
+		display: list-item;
+	}
+
+	.post-content :global(ol) {
+		display: block;
+		list-style-type: decimal;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 40px;
+	}
+</style>

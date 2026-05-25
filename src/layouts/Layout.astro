@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import FooterComponent from "@/components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 const { title = "Ryan's Blog" } = Astro.props;
 ---
@@ -17,6 +18,7 @@ const { title = "Ryan's Blog" } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<FooterComponent />
 	</body>
 </html>
 

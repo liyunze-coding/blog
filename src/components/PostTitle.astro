@@ -1,0 +1,57 @@
+---
+const DEFAULT_STYLED_WORD_CLASSES = [
+	"font-extrabold text-white",
+	"font-extrabold",
+	"uppercase tracking-widest text-sky-300",
+	"underline decoration-wavy decoration-amber-400",
+	"font-black text-emerald-400",
+	"line-through decoration-purple-400 text-purple-300",
+];
+
+type Props = {
+	title: string;
+	postId: string;
+	as?: "h1" | "h2";
+	class?: string;
+	variant?: "normal" | "styled";
+	styledWordClasses?: string[];
+};
+
+const {
+	title,
+	postId,
+	as: Tag = "h2",
+	class: className,
+	variant = "normal",
+	styledWordClasses = DEFAULT_STYLED_WORD_CLASSES,
+} = Astro.props;
+
+const words = title.split(/\s+/).filter(Boolean);
+const isStyled = variant === "styled";
+---
+
+<Tag
+	class:list={[
+		isStyled ? "text-center" : "text-balance",
+		"uppercase",
+		className,
+	]}
+>
+	{
+		words.map((word: string, index: number) => (
+			<>
+				<span
+					class:list={[
+						"inline-block",
+						variant === "styled" &&
+							styledWordClasses[index % styledWordClasses.length],
+					]}
+					transition:name={`post-title-${postId}-word-${index}`}
+				>
+					{word}
+				</span>
+				{index < words.length - 1 && " "}
+			</>
+		))
+	}
+</Tag>
