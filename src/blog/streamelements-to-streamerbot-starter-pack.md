@@ -1,6 +1,6 @@
 ---
 title: "StreamElements to Streamer.Bot Starter Pack"
-date: "2026-05-25"
+date: 2026-05-25
 description: "Transition to Streamer.Bot smoothly"
 styledWordClasses:
     [

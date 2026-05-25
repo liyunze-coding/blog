@@ -3,6 +3,10 @@ import PostTitle from "@/components/PostTitle.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 
+function formatDate(date: Date) {
+  return date.toLocaleDateString("en-CA");
+}
+
 const posts = await getSinglePage("blog");
 ---
 
@@ -10,7 +14,7 @@ const posts = await getSinglePage("blog");
 	<main class="flex flex-col items-center justify-center">
 		<div class="w-4/5 lg:w-2/3 xl:w-1/2 min-h-[calc(100vh-100px)]">
 			<section class="mt-20 mb-20">
-				<h1 class="text-center text-7xl">Latest Posts</h1>
+				<h1 class="text-center text-7xl">Ryan's Blog</h1>
 			</section>
 			<section class="flex flex-col items-center justify-center gap-5">
 				{posts.map((post) => (
@@ -23,7 +27,7 @@ const posts = await getSinglePage("blog");
       							variant="normal"
       							class="mb-2 text-3xl font-extrabold uppercase"
       						/>
-      						<div class="text-lg text-gray-400 w-1/4">2026-05-24</div>
+      						<div class="text-lg text-gray-400 w-1/4">{formatDate(post.data.date)}</div>
        					</div>
        					<p class="text-gray-400 text-xl">
       						{post.data.description}
