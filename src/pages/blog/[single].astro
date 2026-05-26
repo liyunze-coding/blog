@@ -18,10 +18,10 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { title, styledWordClasses } = post.data;
+const { title, description, styledWordClasses } = post.data;
 ---
 
-<BlogLayout title={title}>
+<BlogLayout title={title} description={description}>
 	<AllPosts />
 	<PostTitle
 		title={title}

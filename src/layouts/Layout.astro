@@ -1,16 +1,34 @@
 ---
+interface Props {
+	title: string;
+	description: string;
+	thumbnail?: string;
+	metaURL?: string;
+}
+
 import "@/styles/global.css";
 import FooterComponent from "@/components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
-const { title = "Ryan's Blog" } = Astro.props;
+const { title, description, thumbnail, metaURL } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.ico" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" /><meta
+			name="keywords"
+			content="blog, rythondev, ryan"
+		/>
+		<meta name="author" content="RythonDev" />
+		<meta name="theme-color" content="#2B2D31" />
+
+		{thumbnail && <meta name="twitter:image" content={thumbnail} />}
+
+		{metaURL && <meta name="og:url" content={metaURL} />}
+
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ClientRouter />
@@ -20,14 +38,3 @@ const { title = "Ryan's Blog" } = Astro.props;
 		<FooterComponent />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		background: #101010;
-		color: #fff;
-	}
-</style>
