@@ -21,15 +21,15 @@ const sortPostByDate = sortByDate(posts);
 			<section class="flex flex-col items-center justify-center gap-5">
 				{sortPostByDate.map((post) => (
     		        <hr class="w-full border border-solid border-[#404040]" />
-    				<a href={`/blog/${post.id}`}>
-       					<div class="flex flex-row items-start justify-between">
+    				<a href={`/blog/${post.id}`} class="w-full">
+       					<div class="w-full flex flex-row items-start justify-between">
       						<PostTitle
       							title={post.data.title}
       							postId={post.id}
       							variant="normal"
       							class="mb-2 text-3xl font-extrabold uppercase"
       						/>
-      						<div class="text-lg text-gray-400 w-1/4">{formatDate(post.data.date)}</div>
+      						<div class="text-lg text-gray-400 w-1/4 text-right">{formatDate(post.data.date)}</div>
        					</div>
        					<p class="text-gray-400 text-xl">
       						{post.data.description}

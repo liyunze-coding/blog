@@ -61,8 +61,7 @@ const { Content } = await render(post);
 	.post-content :global(p) {
 		display: block;
 		font-size: 1.1rem;
-		margin-top: 1em;
-		margin-bottom: 1em;
+		margin-bottom: 0.5em;
 		margin-left: 0;
 		margin-right: 0;
 	}
@@ -71,7 +70,7 @@ const { Content } = await render(post);
 		display: block;
 		font-size: 2em;
 		margin-top: 0.67em;
-		margin-bottom: 0.67em;
+		margin-bottom: 0.25em;
 		margin-left: 0;
 		margin-right: 0;
 		font-weight: bold;
@@ -120,7 +119,7 @@ const { Content } = await render(post);
 		display: block;
 		font-size: 1.5em;
 		margin-top: 0.83em;
-		margin-bottom: 0.83em;
+		margin-bottom: 0.5em;
 		margin-left: 0;
 		margin-right: 0;
 		font-weight: bold;
@@ -131,10 +130,11 @@ const { Content } = await render(post);
 		display: block;
 		font-size: 1.17em;
 		margin-top: 1em;
-		margin-bottom: 1em;
+		margin-bottom: 0.25em;
 		margin-left: 0;
 		margin-right: 0;
 		font-weight: bold;
+		color: #8fffde;
 	}
 
 	.post-content :global(ul) {
@@ -152,6 +152,7 @@ const { Content } = await render(post);
 
 	.post-content :global(li) {
 		display: list-item;
+		margin-bottom: 0.25em;
 	}
 
 	.post-content :global(ol) {
@@ -162,5 +163,32 @@ const { Content } = await render(post);
 		margin-left: 0;
 		margin-right: 0;
 		padding-left: 40px;
+	}
+
+	.post-content :global(table) {
+		width: 100%;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		border-collapse: collapse;
+		border: 1px solid #2f3746;
+		background-color: #111827;
+	}
+
+	.post-content :global(th),
+	.post-content :global(td) {
+		padding: 0.65rem 0.85rem;
+		border: 1px solid #2f3746;
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.post-content :global(th) {
+		background-color: #1f2937;
+		color: #8fffde;
+		font-weight: 600;
+	}
+
+	.post-content :global(tr:nth-child(even) td) {
+		background-color: #151d2b;
 	}
 </style>
