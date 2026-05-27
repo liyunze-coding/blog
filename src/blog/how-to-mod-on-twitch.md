@@ -1,7 +1,7 @@
 ---
 title: "How to Moderate for Streamers on Twitch"
 date: 2026-05-27
-description: "The basics of moderating streamers"
+description: "The basics of moderating for Twitch streamers"
 styledWordClasses:
     [
         "md:text-5xl font-bold",
@@ -34,16 +34,16 @@ This will allow yourself to quickly ban or timeout the user, or delete the messa
 
 There are a few slash commands that every moderator should know:
 
-| Command | Description |
-| --- | --- |
-| `/ban [user] (reason)` | Ban the user, optionally specify a reason. |
-| `/timeout [user] (reason)` | Timeout the user, optionally specify a reason. |
-| `/shoutout [user]` | Shoutout a user. |
-| `/user [user]` | View information about users. Click to view message history, mod actions and mod comments. |
-| `/followers (duration)`, `/followersoff` | Adjust followers mode, including how long users must follow the channel. |
-| `/subscribers`, `/subscribersoff` | Turn subscriber-only mode on or off. |
-| `/pin [message]` | Pin the message. |
-| `/announce [message]` | Announce the message. |
+| Command                                  | Description                                                                                |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `/ban [user] (reason)`                   | Ban the user, optionally specify a reason.                                                 |
+| `/timeout [user] (reason)`               | Timeout the user, optionally specify a reason.                                             |
+| `/shoutout [user]`                       | Shoutout a user.                                                                           |
+| `/user [user]`                           | View information about users. Click to view message history, mod actions and mod comments. |
+| `/followers (duration)`, `/followersoff` | Adjust followers mode, including how long users must follow the channel.                   |
+| `/subscribers`, `/subscribersoff`        | Turn subscriber-only mode on or off.                                                       |
+| `/pin [message]`                         | Pin the message.                                                                           |
+| `/announce [message]`                    | Announce the message.                                                                      |
 
 ## Shoutouts
 
@@ -65,7 +65,7 @@ Be aware that false positives may happen, users banned on another channel may be
 
 ## Rule Enforcement
 
-There are MANY reddit posts about "what should I do with this problematic Twitch chatter?", the most frequent and valid answer is to just ban them. 
+There are MANY reddit posts about "what should I do with this problematic Twitch chatter?", the most frequent and valid answer is to just ban them.
 
 Banning users may feel pretty bad, or the streamer may worry about their chat engagement. However, despite being counter-intuitive, enforcing your boundaries and banning problematic chatters actually IMPROVE the chat, but making other chatters feel more comfortable without the presence of negativity.
 
