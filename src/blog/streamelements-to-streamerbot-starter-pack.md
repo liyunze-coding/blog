@@ -69,7 +69,7 @@ https://nutty.gg/en-aud/products/streamer-bot-starter-pack
 
 ## Weather (WebMage, forked by RythonDev)
 
-<a href="/streamerbot/WeatherCommand.sb" target="_blank" class="">Click here for Ad Management action file</a>
+<a href="/streamerbot/WeatherCommand.sb" target="_blank" class="">Click here for Weather action file</a>
 
 Forked from: https://extensions.streamer.bot/docs?topic=42
 
