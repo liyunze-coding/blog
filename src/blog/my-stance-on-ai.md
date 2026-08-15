@@ -57,9 +57,9 @@ When you create a portfolio website, it is meant to be how YOU want to present y
 
 While AI does have an environmental impact, a lot of claims have been blown out of proportions.
 
-A lot of water is used for cooling while training the AI. The water quality near data centres are poorer and residents nearby are affected. Data centres drive up prices of electricity (and possibly water bills) for nearby residents too.
+A lot of water is used for cooling while both training and prompting. The water quality near data centres are poorer and residents nearby are affected. Data centres drive up prices of electricity (and possibly water bills) for nearby residents too.
 
-There are claims that drinking water will look polluted, that is not true.
+There are claims that drinking water in the future will look polluted, that is blatantly not true. 
 
 ## What I tolerate
 
